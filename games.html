@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SchoolFlashCards3 - Unblocked Games for School</title>
+    <style>
+        /* Coolmath-inspired color scheme */
+        :root {
+            --primary: #FF6B6B;
+            --secondary: #4ECDC4;
+            --accent: #FFE66D;
+            --dark: #292F36;
+            --light: #F7FFF7;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+        }
+        
+        header {
+            background-color: var(--primary);
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: var(--accent);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--accent);
+        }
+        
+        .hero {
+            background-color: var(--secondary);
+            padding: 40px 0;
+            text-align: center;
+            color: white;
+        }
+        
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto 25px;
+        }
+        
+        .search-bar {
+            max-width: 500px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .search-bar input {
+            width: 100%;
+            padding: 12px 20px;
+            border-radius: 30px;
+            border: none;
+            font-size: 16px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .search-bar button {
+            position: absolute;
+            right: 5px;
+            top: 5px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            cursor: pointer;
+        }
+        
+        .games-section {
+            padding: 40px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--dark);
+            font-size: 32px;
+        }
+        
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+        }
+        
+        .game-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .game-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .game-image {
+            height: 150px;
+            background-color: var(--secondary);
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .game-info {
+            padding: 15px;
+        }
+        
+        .game-title {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        
+        .game-description {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .play-btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .play-btn:hover {
+            background-color: #ff5252;
+        }
+        
+        .categories {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .category-btn {
+            background-color: white;
+            border: 2px solid var(--secondary);
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .category-btn:hover, .category-btn.active {
+            background-color: var(--secondary);
+            color: white;
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .footer-links a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+        
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+        
+        .copyright {
+            font-size: 14px;
+            color: #aaa;
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+            }
+            
+            .games-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">School<span>Flash</span>Cards</a>
+                <nav>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">All Games</a></li>e
+                        <li><a href="#">New Games</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <div class="container">
+            <div class="search-bar">
+                <input type="text" placeholder="Search for games...">
+                <button>🔍</button>
+            </div>
+        </div>
+    </section>
+    
+    <section class="games-section">
+        <div class="container">
+            <h2 class="section-title">Popular Games</h2>
+            
+            
+            <div class="games-grid">
+                <!-- Game 1 -->
+                <div class="game-card">
+                    <div class="game-image" style="background-image: url('https://via.placeholder.com/300x150?text=Run+3');"></div>
+                    <div class="game-info">
+                        <h3 class="game-title">Run 3</h3>
+                        <p class="game-description">Navigate through space tunnels in this endless runner game.</p>
+                        <a href="#" class="play-btn">Play Now</a>
+                    </div>
+                </div>
+                
+                <!-- Game 2 -->
+                <div class="game-card">
+                    <div class="game-image" style="background-image: url('https://via.placeholder.com/300x150?text=Fireboy+and+Watergirl');"></div>
+                    <div class="game-info">
+                        <h3 class="game-title">Fireboy & Watergirl</h3>
+                        <p class="game-description">Team up to solve puzzles in this cooperative platformer.</p>
+                        <a href="#" class="play-btn">Play Now</a>
+                    </div>
+                </div>
+                
+                <!-- Game 3 -->
+                <div class="game-card">
+                    <div class="game-image" style="background-image: url('https://via.placeholder.com/300x150?text=2048');"></div>
+                    <div class="game-info">
+                        <h3 class="game-title">2048</h3>
+                        <p class="game-description">Combine tiles to reach the 2048 tile in this addictive puzzle game.</p>
+                        <a href="#" class="play-btn">Play Now</a>
+                    </div>
+                </div>
+                
+                <!-- Game 4 -->
+                <div class="game-card">
+                    <div class="game-image" style="background-image: url('https://via.placeholder.com/300x150?text=Chess');"></div>
+                    <div class="game-info">
+                        <h3 class="game-title">Chess</h3>
+                        <p class="game-description">The classic strategy game. Play against the computer or a friend.</p>
+                        <a href="#" class="play-btn">Play Now</a>
+                    </div>
+                </div>
+                
+                <!-- Game 5 -->
+                <div class="game-card">
+                    <div class="game-image" style="background-image: url('https://via.placeholder.com/300x150?text=Snake');"></div>
+                    <div class="game-info">
+                        <h3 class="game-title">Snake</h3>
+                        <p class="game-description">The classic snake game with modern graphics.</p>
+                        <a href="#" class="play-btn">Play Now</a>
+                    </div>
+                </div>
+                
+                <!-- Game 6 -->
+                <div class="game-card">
+                    <div class="game-image" style="background-image: url('https://via.placeholder.com/300x150?text=Sudoku');"></div>
+                    <div class="game-info">
+                        <h3 class="game-title">Sudoku</h3>
+                        <p class="game-description">Challenge your brain with this popular number puzzle.</p>
+                        <a href="#" class="play-btn">Play Now</a>
+                    </div>
+                </div>
+                
+                <!-- Game 7 -->
+                <div class="game-card">
+                    <div class="game-image" style="background-image: url('https://via.placeholder.com/300x150?text=Tetris');"></div>
+                    <div class="game-info">
+                        <h3 class="game-title">Tetris</h3>
+                        <p class="game-description">The timeless block-stacking game that never gets old.</p>
+                        <a href="#" class="play-btn">Play Now</a>
+                    </div>
+                </div>
+                
+                <!-- Game 8 -->
+                <div class="game-card">
+                    <div class="game-image" style="background-image: url('https://via.placeholder.com/300x150?text=Math+Jump');"></div>
+                    <div class="game-info">
+                        <h3 class="game-title">Math Jump</h3>
+                        <p class="game-description">Solve math problems to help your character jump to new heights.</p>
+                        <a href="#" class="play-btn">Play Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="games-section" style="background-color: #f0f8ff;">
+        <div class="container">
+            <h2 class="section-title">New & Updated Games</h2>
+            <div class="games-grid">
+                <!-- New Game 1 -->
+                <div class="game-card">
+                    <div class="game-image" style="background-image: url('https://via.placeholder.com/300x150?text=Geometry+Dash');"></div>
+                    <div class="game-info">
+                        <h3 class="game-title">Geometry Dash</h3>
+                        <p class="game-description">Jump and fly your way through danger in this rhythm-based action game.</p>
+                        <a href="#" class="play-btn">Play Now</a>
+                    </div>
+                </div>
+                
+                <!-- New Game 2 -->
+                <div class="game-card">
+                    <div class="game-image" style="background-image: url('https://via.placeholder.com/300x150?text=Cut+The+Rope');"></div>
+                    <div class="game-info">
+                        <h3 class="game-title">Cut The Rope</h3>
+                        <p class="game-description">Feed candy to Om Nom by cutting ropes in this physics puzzle game.</p>
+                        <a href="#" class="play-btn">Play Now</a>
+                    </div>
+                </div>
+                
+                <!-- New Game 3 -->
+                <div class="game-card">
+                    <div class="game-image" style="background-image: url('https://via.placeholder.com/300x150?text=Slither.io');"></div>
+                    <div class="game-info">
+                        <h3 class="game-title">Slither.io</h3>
+                        <p class="game-description">Grow the longest snake in this multiplayer .io game.</p>
+                        <a href="#" class="play-btn">Play Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+            <p class="copyright">© 2025 SchoolFlashCards3. Jaysoninthesubway and EKFun are affiliates of SchoolFlashCards3.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Simple functionality for category filtering
+        document.addEventListener('DOMContentLoaded', function() {
+            const categoryButtons = document.querySelectorAll('.category-btn');
+            
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    categoryButtons.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    // In a real implementation, you would filter games here
+                    // For this demo, we'll just log the category
+                    console.log(`Filtering by: ${this.textContent}`);
+                });
+            });
+            
+            // Search functionality
+            const searchInput = document.querySelector('.search-bar input');
+            const searchButton = document.querySelector('.search-bar button');
+            
+            searchButton.addEventListener('click', function() {
+                performSearch();
+            });
+            
+            searchInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    performSearch();
+                }
+            });
+            
+            function performSearch() {
+                const query = searchInput.value.trim();
+                if (query) {
+                    console.log(`Searching for: ${query}`);
+                    // In a real implementation, you would filter games by search query
+                    alert(`Search functionality would show results for: ${query}`);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
