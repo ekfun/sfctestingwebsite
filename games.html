@@ -508,52 +508,69 @@
         </div>
     </footer>
     
-    <script>
-        // Simple functionality for category filtering
-        document.addEventListener('DOMContentLoaded', function() {
-            const categoryButtons = document.querySelectorAll('.category-btn');
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const gameCards = document.querySelectorAll('.game-card');
+        const searchInputs = document.querySelectorAll('.search-bar input, .header-search input');
+        const searchButtons = document.querySelectorAll('.search-bar button, .header-search button');
+        const gamesGrid = document.querySelector('.games-grid');
+        
+        // Create no results message element
+        const noResultsMsg = document.createElement('div');
+        noResultsMsg.className = 'no-results';
+        noResultsMsg.textContent = 'No games found matching your search.';
+        noResultsMsg.style.display = 'none';
+        noResultsMsg.style.gridColumn = '1 / -1'; // Make it span all columns
+        noResultsMsg.style.textAlign = 'center';
+        noResultsMsg.style.fontSize = '1.2em';
+        noResultsMsg.style.margin = '20px 0';
+        gamesGrid.appendChild(noResultsMsg);
+
+        function performSearch(query) {
+            query = query.trim().toLowerCase();
+            let hasResults = false;
             
-            categoryButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    // Remove active class from all buttons
-                    categoryButtons.forEach(btn => btn.classList.remove('active'));
-                    
-                    // Add active class to clicked button
-                    this.classList.add('active');
-                    
-                    // In a real implementation, you would filter games here
-                    // For this demo, we'll just log the category
-                    console.log(`Filtering by: ${this.textContent}`);
-                });
-            });
-            
-            // Search functionality for both search bars
-            const searchInputs = document.querySelectorAll('.search-bar input, .header-search input');
-            const searchButtons = document.querySelectorAll('.search-bar button, .header-search button');
-            
-            searchButtons.forEach((button, index) => {
-                button.addEventListener('click', function() {
-                    performSearch(searchInputs[index].value);
-                });
-            });
-            
-            searchInputs.forEach(input => {
-                input.addEventListener('keypress', function(e) {
-                    if (e.key === 'Enter') {
-                        performSearch(this.value);
-                    }
-                });
-            });
-            
-            function performSearch(query) {
-                query = query.trim();
-                if (query) {
-                    console.log(`Searching for: ${query}`);
-                    // In a real implementation, you would filter games by search query
-                    alert(`Search functionality would show results for: ${query}`);
+            gameCards.forEach(card => {
+                const title = card.querySelector('.game-title').textContent.toLowerCase();
+                if (query === '' || title.includes(query)) {
+                    card.style.display = 'block';
+                    hasResults = true;
+                } else {
+                    card.style.display = 'none';
                 }
+            });
+            
+            // Show/hide no results message
+            if (!hasResults && query !== '') {
+                noResultsMsg.style.display = 'block';
+            } else {
+                noResultsMsg.style.display = 'none';
             }
+        }
+        
+        // Add event listeners to both search bars
+        searchButtons.forEach((button, index) => {
+            button.addEventListener('click', function() {
+                performSearch(searchInputs[index].value);
+            });
         });
-    </script>
+        
+        searchInputs.forEach(input => {
+            input.addEventListener('keyup', function(e) {
+                performSearch(this.value);
+            });
+        });
+        
+        // Clear search when clicking the search icon with empty input
+        searchButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const input = this.parentElement.querySelector('input');
+                if (input.value.trim() === '') {
+                    performSearch('');
+                }
+            });
+        });
+    });
+</script>
 </body>
 </html>
