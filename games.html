@@ -6,309 +6,355 @@
     <title>SchoolFlashCards3 - Unblocked Games</title>
     <link rel="shortcut icon" href="logo.png" />
         <style>
-        :root {
-            --primary: #4ECDC4;
-            --secondary: #4ECDC4;
-            --accent: #FFE66D;
-            --dark: #292F36;
-            --light: #F7FFF7;
-            --button: #FF6B6B;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Comic Sans MS', cursive, sans-serif;
-        }
-        
-        body {
-            background-color: var(--light);
-            color: var(--dark);
-        }
-        
-        header {
-            background-color: var(--primary);
-            padding: 15px 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
+    :root {
+        --primary: #4ECDC4;
+        --secondary: #4ECDC4;
+        --accent: #FFE66D;
+        --dark: #292F36;
+        --light: #F7FFF7;
+        --button: #FF6B6B;
+    }
+    
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Comic Sans MS', cursive, sans-serif;
+    }
+    
+    body {
+        background-color: var(--light);
+        color: var(--dark);
+    }
+    
+    header {
+        background-color: var(--primary);
+        padding: 15px 0;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    
+    .container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    
+    .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+    }
+    
+    .logo {
+        font-size: 28px;
+        font-weight: bold;
+        color: white;
+        text-decoration: none;
+        margin-right: auto;
+    }
+    
+    .logo span {
+        color: var(--accent);
+    }
+
+    /* NEW: Random Game Button Box Styles */
+    .random-game-box {
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: var(--accent);
+        padding: 10px 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        z-index: 10;
+        margin-top: 10px;
+        border: 2px solid var(--dark);
+    }
+    
+    .random-game-btn {
+        background-color: var(--dark);
+        color: var(--accent);
+        border: none;
+        padding: 8px 16px;
+        border-radius: 6px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 16px;
+    }
+    
+    .random-game-btn:hover {
+        background-color: var(--primary);
+        color: white;
+        transform: scale(1.05);
+    }
+    
+    nav ul {
+        display: flex;
+        list-style: none;
+        align-items: center;
+        gap: 20px;
+    }
+    
+    nav ul li {
+        margin-left: 0;
+    }
+    
+    nav ul li a {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        transition: color 0.3s;
+    }
+    
+    nav ul li a:hover {
+        color: var(--accent);
+    }
+    
+    .header-search {
+        width: 250px;
+        position: relative;
+    }
+    
+    .header-search input {
+        width: 100%;
+        padding: 8px 15px;
+        border-radius: 30px;
+        border: none;
+        font-size: 14px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    
+    .header-search button {
+        position: absolute;
+        right: 5px;
+        top: 5px;
+        background-color: var(--button);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 25px;
+        height: 25px;
+        cursor: pointer;
+        font-size: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .hero {
+        background-color: var(--secondary);
+        padding: 40px 0;
+        text-align: center;
+        color: white;
+    }
+    
+    .hero h1 {
+        font-size: 42px;
+        margin-bottom: 15px;
+    }
+    
+    .hero p {
+        font-size: 18px;
+        max-width: 700px;
+        margin: 0 auto 25px;
+    }
+    
+    .search-bar {
+        max-width: 500px;
+        margin: 0 auto;
+        position: relative;
+    }
+    
+    .search-bar input {
+        width: 100%;
+        padding: 12px 20px;
+        border-radius: 30px;
+        border: none;
+        font-size: 16px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    
+    .search-bar button {
+        position: absolute;
+        right: 5px;
+        top: 5px;
+        background-color: var(--button);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 35px;
+        height: 35px;
+        cursor: pointer;
+    }
+    
+    .games-section {
+        padding: 40px 0;
+    }
+    
+    .section-title {
+        text-align: center;
+        margin-bottom: 30px;
+        color: var(--dark);
+        font-size: 32px;
+    }
+    
+    .games-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 25px;
+    }
+    
+    .game-card {
+        background-color: white;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+    
+    .game-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    
+    .game-image {
+        height: 150px;
+        background-color: var(--secondary);
+        background-size: cover;
+        background-position: center;
+    }
+    
+    .game-info {
+        padding: 15px;
+    }
+    
+    .game-title {
+        font-size: 18px;
+        margin-bottom: 10px;
+        color: var(--dark);
+    }
+    
+    .game-description {
+        font-size: 14px;
+        color: #666;
+        margin-bottom: 15px;
+    }
+    
+    .play-btn {
+        display: inline-block;
+        background-color: var(--button);
+        color: white;
+        padding: 8px 15px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: background-color 0.3s;
+    }
+    
+    .play-btn:hover {
+        background-color: #ff5252;
+    }
+    
+    .categories {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 15px;
+        margin-bottom: 30px;
+    }
+    
+    .category-btn {
+        background-color: white;
+        border: 2px solid var(--secondary);
+        padding: 8px 15px;
+        border-radius: 20px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: all 0.3s;
+    }
+    
+    .category-btn:hover, .category-btn.active {
+        background-color: var(--secondary);
+        color: white;
+    }
+    
+    footer {
+        background-color: var(--dark);
+        color: white;
+        padding: 30px 0;
+        text-align: center;
+    }
+    
+    .footer-links {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+    
+    .footer-links a {
+        color: white;
+        margin: 0 15px;
+        text-decoration: none;
+    }
+    
+    .footer-links a:hover {
+        text-decoration: underline;
+    }
+    
+    .copyright {
+        font-size: 14px;
+        color: #aaa;
+    }
+    
+    @media (max-width: 768px) {
         .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 20px;
+            flex-direction: column;
+            gap: 15px;
         }
         
         .logo {
-            font-size: 28px;
-            font-weight: bold;
-            color: white;
-            text-decoration: none;
-            margin-right: auto; /* This pushes everything else to the right */
+            margin-right: 0;
+            width: 100%;
+            text-align: center;
+            position: relative;
         }
         
-        .logo span {
-            color: var(--accent);
+        .random-game-box {
+            position: static;
+            transform: none;
+            margin: 10px auto;
+            width: 90%;
         }
         
         nav ul {
-            display: flex;
-            list-style: none;
-            align-items: center;
-            gap: 20px;
-        }
-        
-        nav ul li {
-            margin-left: 0;
-        }
-        
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            transition: color 0.3s;
-        }
-        
-        nav ul li a:hover {
-            color: var(--accent);
+            flex-direction: column;
+            width: 100%;
+            gap: 10px;
         }
         
         .header-search {
-            width: 250px;
-            position: relative;
-        }
-        
-        .header-search input {
             width: 100%;
-            padding: 8px 15px;
-            border-radius: 30px;
-            border: none;
-            font-size: 14px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        
-        .header-search button {
-            position: absolute;
-            right: 5px;
-            top: 5px;
-            background-color: var(--button);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 25px;
-            height: 25px;
-            cursor: pointer;
-            font-size: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .hero {
-            background-color: var(--secondary);
-            padding: 40px 0;
-            text-align: center;
-            color: white;
-        }
-        
-        .hero h1 {
-            font-size: 42px;
-            margin-bottom: 15px;
-        }
-        
-        .hero p {
-            font-size: 18px;
-            max-width: 700px;
-            margin: 0 auto 25px;
-        }
-        
-        .search-bar {
-            max-width: 500px;
-            margin: 0 auto;
-            position: relative;
-        }
-        
-        .search-bar input {
-            width: 100%;
-            padding: 12px 20px;
-            border-radius: 30px;
-            border: none;
-            font-size: 16px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        
-        .search-bar button {
-            position: absolute;
-            right: 5px;
-            top: 5px;
-            background-color: var(--button);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 35px;
-            height: 35px;
-            cursor: pointer;
-        }
-        
-        .games-section {
-            padding: 40px 0;
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 30px;
-            color: var(--dark);
-            font-size: 32px;
         }
         
         .games-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
         }
-        
-        .game-card {
-            background-color: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        
-        .game-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-        
-        .game-image {
-            height: 150px;
-            background-color: var(--secondary);
-            background-size: cover;
-            background-position: center;
-        }
-        
-        .game-info {
-            padding: 15px;
-        }
-        
-        .game-title {
-            font-size: 18px;
-            margin-bottom: 10px;
-            color: var(--dark);
-        }
-        
-        .game-description {
-            font-size: 14px;
-            color: #666;
-            margin-bottom: 15px;
-        }
-        
-        .play-btn {
-            display: inline-block;
-            background-color: var(--button);
-            color: white;
-            padding: 8px 15px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: background-color 0.3s;
-        }
-        
-        .play-btn:hover {
-            background-color: #ff5252;
-        }
-        
-        .categories {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-bottom: 30px;
-        }
-        
-        .category-btn {
-            background-color: white;
-            border: 2px solid var(--secondary);
-            padding: 8px 15px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: all 0.3s;
-        }
-        
-        .category-btn:hover, .category-btn.active {
-            background-color: var(--secondary);
-            color: white;
-        }
-        
-        footer {
-            background-color: var(--dark);
-            color: white;
-            padding: 30px 0;
-            text-align: center;
-        }
-        
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 20px;
-        }
-        
-        .footer-links a {
-            color: white;
-            margin: 0 15px;
-            text-decoration: none;
-        }
-        
-        .footer-links a:hover {
-            text-decoration: underline;
-        }
-        
-        .copyright {
-            font-size: 14px;
-            color: #aaa;
-        }
-        
-        @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                gap: 15px;
-            }
-            
-            .logo {
-                margin-right: 0;
-                width: 100%;
-                text-align: center;
-            }
-            
-            nav ul {
-                flex-direction: column;
-                width: 100%;
-                gap: 10px;
-            }
-            
-            .header-search {
-                width: 100%;
-            }
-            
-            .games-grid {
-                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            }
-        }
-    </style>
+    }
+</style>
 </head>
 <body>
     <header>
         <div class="container">
             <div class="header-content">
                 <a href="https://schoolflashcards3.github.io/gamehome/" class="logo">School<span>Flash</span>Cards</a>
+                <!-- NEW: Random Game Button Added Here -->
+                <button class="random-game-btn" id="randomGameBtn">🎲 Random Game</button>
                 <nav>
                     <ul>
                         <li><a href="https://discord.gg/GnVUkcsfMw">Discord Server</a></li>
@@ -465,7 +511,7 @@
                     </div>
                 </div>
                 
-                <!-- New Game 15 -->
+                <!-- Game 15 -->
                 <div class="game-card">
                     <div class="game-image" style="background-image: url('https://th.bing.com/th/id/OIP.ZXvaWHcoqFPZcGo78fK9SQHaDk?rs=1&pid=ImgDetMain');"></div>
                     <div class="game-info">
@@ -474,7 +520,7 @@
                     </div>
                 </div>
                 
-                <!-- New Game 16 -->
+                <!-- Game 16 -->
                 <div class="game-card">
                     <div class="game-image" style="background-image: url('https://th.bing.com/th/id/OIP.ollyg9Yd7zX9DNtnkzsc-gHaEJ?rs=1&pid=ImgDetMain');"></div>
                     <div class="game-info">
@@ -483,7 +529,7 @@
                     </div>
                 </div>
 
-                <!-- New Game 17 -->
+                <!-- Game 17 -->
                 <div class="game-card">
                     <div class="game-image" style="background-image: url('https://th.bing.com/th/id/OIP.raV370_mlwudwsGzK28T0wHaEB?rs=1&pid=ImgDetMain');"></div>
                     <div class="game-info">
@@ -492,7 +538,7 @@
                     </div>
                 </div>
                 
-                <!-- New Game 18 -->
+                <!-- Game 18 -->
                 <div class="game-card">
                     <div class="game-image" style="background-image: url('https://thegadgetlite.com/wp-content/uploads/2023/02/retro-bowl-1024x512.jpg');"></div>
                     <div class="game-info">
@@ -572,6 +618,28 @@
                 }
             });
         });
+
+        // Random Game Functionality (Max 18 games)
+        const randomGameBtn = document.getElementById('randomGameBtn');
+        if (randomGameBtn) {
+            randomGameBtn.addEventListener('click', function() {
+                // Get first 18 game links only
+                const gameLinks = Array.from(document.querySelectorAll('.play-btn'))
+                    .slice(0, 18)
+                    .map(btn => btn.href);
+                
+                if (gameLinks.length > 0) {
+                    // Select random game from the first 18
+                    const randomIndex = Math.floor(Math.random() * gameLinks.length);
+                    const randomGameUrl = gameLinks[randomIndex];
+                    
+                    // Open in new tab
+                    window.open(randomGameUrl, '_blank');
+                } else {
+                    alert('No games available!');
+                }
+            });
+        }
     });
 </script>
 </body>
