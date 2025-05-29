@@ -245,15 +245,30 @@
         color: #666;
         margin-bottom: 15px;
     }
-    .logo::after {  
-  content: "‎‎‎‎‎‎‎‎Nny was here";  
-  font-size: 0;  
-  transition: 0.3s;  
+   .logo {
+    position: relative; /* Add this to contain the pseudo-element */
+    display: inline-block; /* Needed for proper positioning */
+}
+
+.logo::after {  
+    content: "Nny-was-here";  
+    position: absolute;
+    left: 0;
+    top: 100%; /* Positions it right below the logo */
+    width: 100%;
+    font-size: 0;  
+    color: gold;
+    opacity: 0;
+    transition: all 0.3s ease;
+    text-align: center; /* Center the text below logo */
+    pointer-events: none; /* Prevents interaction */
 }  
+
 .logo:hover::after {  
-  font-size: 16px;  
-  color: gold;  
-}  
+    font-size: 19px; /* Adjust size as needed */
+    opacity: 0.75; /* Slightly transparent */
+    margin-top: 5px; /* Small gap below logo */
+}
     .play-btn {
         display: inline-block;
         background-color: var(--button);
