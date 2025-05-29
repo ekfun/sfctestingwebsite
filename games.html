@@ -245,7 +245,15 @@
         color: #666;
         margin-bottom: 15px;
     }
-    
+    .logo::after {  
+  content: "   Nny was here";  
+  font-size: 0;  
+  transition: 0.3s;  
+}  
+.logo:hover::after {  
+  font-size: 16px;  
+  color: gold;  
+}  
     .play-btn {
         display: inline-block;
         background-color: var(--button);
