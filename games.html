@@ -616,11 +616,53 @@
   gtag('config', 'G-ZWLPSJ45RJ');
 </script>
     
-    <footer>
+<footer>Add commentMore actions
         <div class="container">
+<footer>
+    <div class="container">
+        <div style="display: flex; justify-content: center; align-items: center; gap: 15px; flex-wrap: wrap;">
             <p class="copyright">© 2025 SchoolFlashCards3. Jaysoninthesubway and EKFun are affiliates of SchoolFlashCards3.™</p>
+            <button id="toggleBrandBtn" style="background: var(--button); color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer;">
+                Toggle Branding
+            </button>
         </div>
     </footer>
+    </div>
+</footer>
+
+<script>
+    // Branding states
+    const branding = {
+        original: {
+            title: "SchoolFlashCards3 - Unblocked Games",
+            favicon: "logo.png" // Your existing favicon
+        },
+        alternate: {
+            title: "New Tab",
+            favicon: "chromelogoNNYNODELETE.png" // Your alternate favicon file
+        }
+    };
+
+    let currentBrand = 'original';
+
+    function toggleBranding() {
+        // Switch to the other brand
+        currentBrand = currentBrand === 'original' ? 'alternate' : 'original';
+        
+        // Apply changes
+        document.title = branding[currentBrand].title;
+        
+        // Change favicon
+        const favicon = document.querySelector("link[rel='icon']") || 
+                        document.createElement('link');
+        favicon.rel = 'icon';
+        favicon.href = branding[currentBrand].favicon;
+        document.head.appendChild(favicon);Add commentMore actions
+    }
+
+    // Set up button
+    document.getElementById('toggleBrandBtn').addEventListener('click', toggleBranding);
+</script>
     
 <script>
     document.addEventListener('DOMContentLoaded', function() {
