@@ -616,52 +616,56 @@
   gtag('config', 'G-ZWLPSJ45RJ');
 </script>
     
-<footer>Add commentMore actions
-        <div class="container">
 <footer>
     <div class="container">
         <div style="display: flex; justify-content: center; align-items: center; gap: 15px; flex-wrap: wrap;">
             <p class="copyright">© 2025 SchoolFlashCards3. Jaysoninthesubway and EKFun are affiliates of SchoolFlashCards3.™</p>
-            <button id="toggleBrandBtn" style="background: var(--button); color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer;">
-                Toggle Branding
+            <button id="cycleBrandBtn" style="background: var(--button); color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; font-family: inherit;">
+                Enable Disguise Mode
             </button>
         </div>
-    </footer>
     </div>
 </footer>
 
 <script>
-    // Branding states
-    const branding = {
-        original: {
+    // Branding options - add your own favicon filenames
+    const brandOptions = [
+        {
             title: "SchoolFlashCards3 - Unblocked Games",
-            favicon: "logo.png" // Your existing favicon
+            favicon: "logo.png" // Default favicon
         },
-        alternate: {
-            title: "New Tab",
-            favicon: "chromelogo.png" // Your alternate favicon file
+        {
+            title: "New Tab", 
+            favicon: "chromefavicon.png" // Alternate favicon 1
         }
-    };
+    ];
 
-    let currentBrand = 'original';
+    let currentBrandIndex = 0;
 
-    function toggleBranding() {
-        // Switch to the other brand
-        currentBrand = currentBrand === 'original' ? 'alternate' : 'original';
+    function cycleBranding() {
+        // Move to next option (loop back to 0 if at end)
+        currentBrandIndex = (currentBrandIndex + 1) % brandOptions.length;
         
-        // Apply changes
-        document.title = branding[currentBrand].title;
+        const brand = brandOptions[currentBrandIndex];
         
-        // Change favicon
-        const favicon = document.querySelector("link[rel='icon']") || 
-                        document.createElement('link');
-        favicon.rel = 'icon';
-        favicon.href = branding[currentBrand].favicon;
-        document.head.appendChild(favicon);Add commentMore actions
+        // Update title
+        document.title = brand.title;
+        
+        // Update favicon
+        let favicon = document.querySelector("link[rel='icon']");
+        if (!favicon) {
+            favicon = document.createElement('link');
+            favicon.rel = 'icon';
+            document.head.appendChild(favicon);
+        }
+        favicon.href = brand.favicon;
     }
 
-    // Set up button
-    document.getElementById('toggleBrandBtn').addEventListener('click', toggleBranding);
+    // Initialize with first brand
+    document.addEventListener('DOMContentLoaded', function() {
+        cycleBranding(); // Set initial brand
+        document.getElementById('cycleBrandBtn').addEventListener('click', cycleBranding);
+    });
 </script>
     
 <script>
