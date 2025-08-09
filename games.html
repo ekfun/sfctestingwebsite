@@ -30,6 +30,30 @@
             color: var(--dark);
         }
 
+		.logo {
+    position: relative;
+    display: inline-block;
+}
+
+.logo .hover-text {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+    color: var(--accent);
+    opacity: 0;
+    transform: translateY(5px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none;
+}
+
+.logo:hover .hover-text {
+    opacity: 1;
+    transform: translateY(0);
+}
+
         header {
             background-color: var(--primary);
             padding: 15px 0;
@@ -360,41 +384,40 @@
 </head>
 <body>
     <header>
-        <div class="container">
-            <div class="header-content">
-                <a href="https://schoolflashcards3.github.io/gamehome/" class="logo"
-                    >School<span>Flash</span>Cards</a
-                >
-                <div style="display: flex; align-items: center; gap: 15px;">
-                    <button class="random-game-btn" id="randomGameBtn">🎲 Random Game</button>
-                    <a
-                        href="https://schoolflashcards3.github.io/suggestions/"
-                        class="suggestions-btn"
-                        >💡 Suggestions</a
-                    >
-                    <nav>
-                        <ul>
-                            <li><a href="https://discord.gg/GnVUkcsfMw">Discord</a></li>
-                            <li><a href="https://www.youtube.com/@SFC3GH">YouTube</a></li>
-                            <li><a href="https://www.tiktok.com/@schoolflashcards3_gh">TikTok</a></li>
-                            <li>
-                                <a href="https://schoolflashcards3.github.io/gamehome/wr.html"
-                                    >WR</a
-                                >
-                            </li>
-                            <li><a href="https://schoolflashcards3.github.io/gamehome/games">All Games</a></li>
-                            <li>
-                                <div class="header-search">
-                                    <input type="text" placeholder="Search games..." />
-                                    <button>🔍</button>
-                                </div>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
+    <div class="container">
+        <div class="header-content">
+            <a href="https://schoolflashcards3.github.io/gamehome/" class="logo">
+                School<span>Flash</span>Cards
+                <span class="hover-text">Nny was here</span>
+            </a>
+            <div style="display: flex; align-items: center; gap: 15px;">
+                <button class="random-game-btn" id="randomGameBtn">🎲 Random Game</button>
+                <a
+                    href="https://schoolflashcards3.github.io/suggestions/"
+                    class="suggestions-btn"
+                >💡 Suggestions</a>
+                <nav>
+                    <ul>
+                        <li><a href="https://discord.gg/GnVUkcsfMw">Discord</a></li>
+                        <li><a href="https://www.youtube.com/@SFC3GH">YouTube</a></li>
+                        <li><a href="https://www.tiktok.com/@schoolflashcards3_gh">TikTok</a></li>
+                        <li>
+                            <a href="https://schoolflashcards3.github.io/gamehome/wr.html">WR</a>
+                        </li>
+                        <li><a href="https://schoolflashcards3.github.io/gamehome/games">All Games</a></li>
+                        <li>
+                            <div class="header-search">
+                                <input type="text" placeholder="Search games..." />
+                                <button>🔍</button>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
             </div>
         </div>
-    </header>
+    </div>
+</header>
+
 
     <section class="hero">
         <div class="container">
