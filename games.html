@@ -67,12 +67,50 @@
         }
 
         .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+}
+
+.header-left {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+}
+
+.header-right {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin-left: auto;
+}
+
+/* Make elements shrink on smaller screens */
+.header-content > * {
+    flex: 1 1 auto;
+    min-width: 150px;
+}
+
+.header-search {
+    flex: 1 1 200px;
+    max-width: 300px;
+}
+
+/* Stack neatly on mobile */
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .header-right {
+        justify-content: center;
+        margin-left: 0;
+    }
+}
 
         .logo {
             font-size: 28px;
@@ -338,8 +376,50 @@
 
         @media (max-width: 1024px) {
             .header-content {
-                gap: 10px;
-            }
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+}
+
+.header-left {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+}
+
+.header-right {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin-left: auto;
+}
+
+/* Make elements shrink on smaller screens */
+.header-content > * {
+    flex: 1 1 auto;
+    min-width: 150px;
+}
+
+.header-search {
+    flex: 1 1 200px;
+    max-width: 300px;
+}
+
+/* Stack neatly on mobile */
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .header-right {
+        justify-content: center;
+        margin-left: 0;
+    }
+}
 
             nav ul {
                 gap: 10px;
@@ -356,9 +436,50 @@
 
         @media (max-width: 768px) {
             .header-content {
-                flex-direction: column;
-                gap: 15px;
-            }
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+}
+
+.header-left {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+}
+
+.header-right {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin-left: auto;
+}
+
+/* Make elements shrink on smaller screens */
+.header-content > * {
+    flex: 1 1 auto;
+    min-width: 150px;
+}
+
+.header-search {
+    flex: 1 1 200px;
+    max-width: 300px;
+}
+
+/* Stack neatly on mobile */
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .header-right {
+        justify-content: center;
+        margin-left: 0;
+    }
+}
 
             .logo {
                 margin-right: 0;
@@ -383,38 +504,35 @@
     </style>
 </head>
 <body>
-<header>
+    <header>
     <div class="container">
         <div class="header-content">
-            <a href="https://schoolflashcards3.github.io/gamehome/" class="logo">
-                School<span>Flash</span>Cards
-                <span class="hover-text">Nny was here</span>
-            </a>
-
-            <div class="header-bar" style="display: flex; align-items: center; gap: 15px; flex-wrap: wrap;">
-                <!-- Buttons -->
-                <button class="random-game-btn" id="randomGameBtn">🎲 Random Game</button>
-                <a href="https://schoolflashcards3.github.io/suggestions/" class="suggestions-btn">💡 Suggestions</a>
-
-                <!-- Social Links with Icons + Text -->
-                <a href="https://discord.gg/GnVUkcsfMw" class="social-link">💬 Discord</a>
-                <a href="https://www.youtube.com/@SFC3GH" class="social-link">▶️ YouTube</a>
-                <a href="https://www.tiktok.com/@schoolflashcards3_gh" class="social-link">🎵 TikTok</a>
-
-                <!-- WR & All Games -->
-                <a href="https://schoolflashcards3.github.io/gamehome/wr.html" class="social-link">📜 WR</a>
-                <a href="https://schoolflashcards3.github.io/gamehome/games" class="social-link">🎮 All Games</a>
-            </div>
-
-            <!-- Search -->
-            <div class="header-search">
-                <input type="text" placeholder="Search games..." />
-                <button>🔍</button>
-            </div>
+    <div class="header-left">
+        <a href="https://schoolflashcards3.github.io/gamehome/" class="logo">
+            School<span>Flash</span>Cards
+            <span class="hover-text">Nny was here</span>
+        </a>
+        <button class="random-game-btn" id="randomGameBtn">🎲 Random Game</button>
+        <a href="https://schoolflashcards3.github.io/suggestions/" class="suggestions-btn">💡 Suggestions</a>
+    </div>
+    <div class="header-right">
+        <nav>
+            <ul>
+                <li><a href="https://discord.gg/GnVUkcsfMw">Discord</a></li>
+                <li><a href="https://www.youtube.com/@SFC3GH">YouTube</a></li>
+                <li><a href="https://www.tiktok.com/@schoolflashcards3_gh">TikTok</a></li>
+                <li><a href="https://schoolflashcards3.github.io/gamehome/wr.html">WR</a></li>
+                <li><a href="https://schoolflashcards3.github.io/gamehome/games">All Games</a></li>
+            </ul>
+        </nav>
+        <div class="header-search">
+            <input type="text" placeholder="Search games..." />
+            <button>🔍</button>
         </div>
     </div>
+</div>
+</div>
 </header>
-
 
 
     <section class="hero">
